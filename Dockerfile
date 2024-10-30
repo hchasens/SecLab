@@ -1,8 +1,9 @@
-FROM jupyter/datascience-notebook:notebook-7.2.2
+FROM quay.io/jupyter/datascience-notebook:notebook-7.2.2
 
+LABEL name="SecLab"
 LABEL version="0.1"
-LABEL description="This container aims to be a cursed amalgimation of jupyter kernels."
-MAINTAINER ="Hunter Chasens <admin@hunterchasens.com>"
+LABEL description="A curated JupyterLab container for security research."
+MAINTAINER ="Hunter Chasens <hunter.chasens18@ncf.edu>"
 
 ### Source List
 # https://github.com/yunabe/tslab 		- 	Typescript Javascript Support
@@ -29,33 +30,33 @@ RUN apt install -y apt-utils net-tools vim man file curl wget golang-go openjdk-
 
 USER ${NB_UID}
 
-# Loose Kernels
 ## Javascript / Typescript
 RUN npm install -g tslab
-RUN tslab install
+RUN tslab install --prefix /opt/conda/
 
 
 ## Java
 RUN wget https://github.com/SpencerPark/IJava/releases/download/v1.3.0/ijava-1.3.0.zip
-RUN mkdir ijava && cd ijava && unzip ../ijava-1.3.0.zip
-RUN sudo python3 install.py
+RUN mkdir ijava && unzip ijava-1.3.0.zip -d ijava
+RUN python3 ijava/install.py --prefix /opt/conda/
+
 
 ## Gophernotes - Golang
-RUN <<EOT
-go install github.com/gopherdata/gophernotes@v0.7.5
-mkdir -p ~/.local/share/jupyter/kernels/gophernotes
-cd ~/.local/share/jupyter/kernels/gophernotes
-cp "$(go env GOPATH)"/pkg/mod/github.com/gopherdata/gophernotes@v0.7.5/kernel/*  "."
-chmod +w ./kernel.json # in case copied kernel.json has no write permission
-sed "s|gophernotes|$(go env GOPATH)/bin/gophernotes|" < kernel.json.in > kernel.json
-EOT
-
+RUN go install github.com/gopherdata/gophernotes@latest
+RUN mkdir -p /opt/conda/share/jupyter/kernels/gophernotes
+WORKDIR /opt/conda/share/jupyter/kernels/gophernotes
+RUN cp "$(go env GOPATH)"/pkg/mod/github.com/gopherdata/gophernotes@v0.7.5/kernel/*  "."
+RUN chmod +w ./kernel.json # in case copied kernel.json has no write permission
+RUN sed "s|gophernotes|$(go env GOPATH)/bin/gophernotes|" < kernel.json.in > kernel.json
+WORKDIR /tmp/
 
 # Xeus Packages - C++/C Lua SQL SQLlite
 RUN mamba install -y xeus xeus-sqlite xeus-sql xeus-lua xeus-cling -c conda-forge
 
 # SoS Conda Packages - Bash Script + Multi Kernel Notebooks
 RUN mamba install -y  sos sos-notebook jupyterlab-sos jupyterlab-transient-display-data sos-bash sos-python sos-r -c conda-forge
+RUN jupyter labextension disable ipyparallel-labextension	# Removes distributed computing panel (cluter for most people)
+
 
 WORKDIR "${HOME}"
 
