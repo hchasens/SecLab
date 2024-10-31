@@ -15,18 +15,54 @@ MAINTAINER ="Hunter Chasens <hunter.chasens18@ncf.edu>"
 
 
 USER root
-
 WORKDIR /tmp/
+ENV DEBIAN_FRONTEND=noninteractive
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
 
 RUN apt update
-RUN apt install -y software-properties-common
+RUN apt install -y software-properties-common apt-utils
 RUN add-apt-repository -y ppa:longsleep/golang-backports
 
 RUN apt update
-RUN apt install -y apt-utils net-tools vim man file curl wget golang-go openjdk-21-jre openjdk-21-jdk openjdk-21-doc
+
+# List of Tools Kali and Ubuntu Share
+
+# Splits install into several parts to use docker build caching. 
+# Will change once more stable
+
+RUN apt install -y net-tools vim man file curl wget \
+golang-go openjdk-21-jre openjdk-21-jdk openjdk-21-doc 7zip \
+aircrack-ng apache2 arp-scan arping atftpd axel bind9-dnsutils \
+binwalk bluez bluez-hcidump bully cadaver cewl chntpw cifs-utils \
+clang creddump7 crunch cryptsetup cryptsetup-initramfs
+
+RUN apt install -y cryptsetup-nuke-password dirb dmitry \
+dns2tcp dnsenum dnsrecon dos2unix ethtool exiv2 expect ffuf \
+fierce fping gdisk git hashcat hashdeep hashid  hping3 hydra \
+i2c-tools ifenslave ike-scan  inetsim iodine iw john
+
+RUN apt install -y libimage-exiftool-perl macchanger magicrescue maskprocessor masscan \
+minicom miredo mitmproxy nasm nbtscan ncrack ncurses-hexedit \
+netdiscover netmask netsed netsniff-ng nfs-common ngrep nikto nmap \
+onesixtyone openvpn patator php php-mysql pixiewps plocate \
+proxychains4 proxytunnel ptunnel python-is-python3 python3-impacket
+
+RUN apt install -y python3-pip python3-scapy python3-virtualenv radare2 rake reaver \
+redsocks rfkill samba samdump2 sbd scalpel screen scrounge-ntfs \
+sendemail sleuthkit smbmap snmp snmpd socat sqlmap ssldump sslh \
+sslscan sslsplit statsprocessor stunnel4 swaks tcpick tcpreplay \
+telnet testdisk tftp-hpa thc-ipv6  traceroute udptunnel unrar unar \
+upx-ucl vboot-kernel-utils vboot-utils vim vlan vpnc wafw00f weevely \
+wfuzz whatweb whois wifite xxd netcat-traditional tcpdump gobuster
+
+## Currently causing ocational build errors default-mysql-server
+
+RUN apt autoremove -y && apt clean -y
 
 
-# Add Kali Tools (We use Snapshots for Stability)
+
+# Add Kali Tools (We use Snapshots for Stability (Still unstable due to mixing repos))
 # @TODO remove version dependency
 
 RUN echo "deb http://http.kali.org/kali kali-last-snapshot main contrib non-free non-free-firmware" | tee /etc/apt/sources.list
