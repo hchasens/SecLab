@@ -13,6 +13,8 @@ A curated JupyterLab container that bundles popular kernels from various develop
 3. [Installation](#installation)
 4. [Kernels and Dependencies](#kernels-and-dependencies)
 5. [Build and Run](#build-and-run)
+6. [Roadmap](#roadmap)
+7. [License](#license)
 
 **Overview**
 ------------
@@ -34,11 +36,15 @@ This Docker container is designed to be a meta-project, combining the best of va
 **Installation**
 --------------
 
-To install this container, follow these steps:
+@TODO - Fillout docker documentation
 
-1. Clone the repository: `git clone https://github.com/hunterchasens/jupyterlab-kernels.git`
-2. Build the Docker image: `docker build -t hunterchasens/jupyterlab-kernels .`
-3. Run the container: `docker run -p 8888:8888 hunterchasens/jupyterlab-kernels`
+`docker pull ghcr.io/hchasens/seclab:v0.0.2`
+
+Refer to JupyterLab Docker docs for more detail (untill this section in compleated). 
+
+Note: It might be benifical to leave several ports open to allow for a reverse shell.
+
+@TODO - Add docker-compose.yaml file
 
 **Kernels and Dependencies**
 ---------------------------
@@ -71,7 +77,12 @@ The following extensions are included in this container:
 
 Additionally, the following dependencies and programs have been pre-installed:
 
+<details>
+  <summary>Click to Expand List</summary>
+
 7zip aircrack-ng apache2 arp-scan arping atftpd axel bind9-dnsutils binwalk bluez bluez-hcidump bully cadaver cewl chntpw cifs-utils clang  creddump7 crunch  cryptsetup cryptsetup-initramfs cryptsetup-nuke-password default-mysql-server dirb dmitry dns2tcp dnsenum dnsrecon dos2unix ethtool exiv2 expect ffuf fierce fping gdisk git hashcat hashdeep hashid  hping3 hydra i2c-tools ifenslave ike-scan  inetsim iodine iw john libimage-exiftool-perl macchanger magicrescue maskprocessor masscan minicom miredo mitmproxy  nasm nbtscan ncrack ncurses-hexedit netdiscover netmask netsed netsniff-ng nfs-common ngrep nikto nmap onesixtyone openvpn patator php php-mysql pixiewps plocate proxychains4 proxytunnel ptunnel python-is-python3 python3-impacket python3-pip python3-scapy python3-virtualenv radare2 rake reaver redsocks rfkill samba samdump2 sbd scalpel screen scrounge-ntfs sendemail sleuthkit smbmap snmp snmpd socat sqlmap ssldump sslh sslscan sslsplit statsprocessor stunnel4 swaks tcpick tcpreplay telnet testdisk tftp-hpa thc-ipv6  traceroute udptunnel unrar unar upx-ucl vboot-kernel-utils vboot-utils vim vlan vpnc wafw00f weevely wfuzz whatweb whois wifite xxd netcat tcpdump curl wget gobuster 
+
+</details>
 
 With many more to come! The end goal will be to create a kali-like enviornemnt, such that users who are familiar with Kali will feel at home using this project.
 
@@ -79,7 +90,36 @@ Our roadmap includes adding tools/libs like Metasploit, SecList, exploitdb(Searc
 
 **Build and Run**
 ------------------
+To build and run this container, follow these steps:
 
-To build and run this container, refer to the Dockerfile in the repository. The Dockerfile is designed to work with the `jupyter/datascience-notebook` base image.
+1. Clone the repository: `git clone https://github.com/hunterchasens/jupyterlab-kernels.git`
+2. Build the Docker image: `docker build -t hunterchasens/jupyterlab-kernels .`
+3. Run the container: `docker run -p 8888:8888 hunterchasens/jupyterlab-kernels`
+
+**Roadmap**
+------------------
+
+* Add the most popular Kali headless tools including:
+    + Metasploit
+    + exploitdb (SearchSploit)
+    + SecList
+* Add a tools library
+    + PEASS-ng (LinPEAS)
+    + pentestmonkey/php-reverse-shell
+* Add quality of life extentions
+    + Graphing Extention to Graph Notes
+    + Extention to allow linking between notebooks
+* Add custom themes 
+* Add showcase notebook
+* Add deafult config
+
+
+**License**
+------------------
+Please note that if a directory within this container has another license file, the contents of that file supersede any licenses mentioned in the repository. As an example, /config/themes barrows it's license from the Jupyterlab Project.
 
 Note: This README.md is subject to change as the project evolves. Please check the repository for the latest updates.
+
+
+
+
