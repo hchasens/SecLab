@@ -34,8 +34,8 @@ RUN wget https://http.kali.org/pool/main/k/kali-archive-keyring/kali-archive-key
 RUN dpkg -i kali-archive-keyring_2024.1_all.deb
 COPY ubuntu.perf /etc/apt/preferences.d/ubuntu.perf
 
-RUN apt update && apt upgrade -y 		# This might break things
-RUN apt --fix-broken install -y kali-linux-headless
+RUN apt update # && apt upgrade -y 		# This might break things
+# RUN apt --fix-broken install -y kali-linux-headless
 
 
 USER ${NB_UID}
