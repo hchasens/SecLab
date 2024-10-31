@@ -1,10 +1,10 @@
 SecLab
 ===============
 
-JupyterLab Docker Container with Multiple Kernels
+PenTesting Focused JupyterLab with Multiple Kernels
 ---------------------------------------------------
 
-A curated JupyterLab container that bundles popular kernels from various developers, providing a seamless experience for cyber security research and scientific computing alike.
+A curated JupyterLab container that bundles popular kernels from various developers, providing a seamless experience for cyber security research, PenTesting, and scientific computing alike.
 
 **Table of Contents**
 
@@ -17,7 +17,7 @@ A curated JupyterLab container that bundles popular kernels from various develop
 **Overview**
 ------------
 
-This Docker container is designed to be a meta-project, combining the best of various Jupyter kernels to provide a comprehensive environment for various types of research, though primaraly aimed at cyber security research.
+This Docker container is designed to be a meta-project, combining the best of various Jupyter kernels, along with locally isntalled tools, to provide a comprehensive environment for various types of research, though primaraly aimed at cyber security research.
 
 **Features**
 ------------
@@ -65,20 +65,17 @@ Future Kenrel Goals:
 * x64 Assembly
 
 The following extensions are included in this container:
-* Jupyterlab-SOS
+* Jupyterlab-SOS (allowing for multi-kernel notebooks)
 * Transient-Display-Data
 * (Many more to come!)
 
-Additionally, the following dependencies have been pre-installed:
+Additionally, the following dependencies and programs have been pre-installed:
 
-* apt utilities
-* vim
-* man
-* file
-* curl
-* wget
-* golang-go
-* (with many more to come!)
+7zip aircrack-ng apache2 arp-scan arping atftpd axel bind9-dnsutils binwalk bluez bluez-hcidump bully cadaver cewl chntpw cifs-utils clang  creddump7 crunch  cryptsetup cryptsetup-initramfs cryptsetup-nuke-password default-mysql-server dirb dmitry dns2tcp dnsenum dnsrecon dos2unix ethtool exiv2 expect ffuf fierce fping gdisk git hashcat hashdeep hashid  hping3 hydra i2c-tools ifenslave ike-scan  inetsim iodine iw john libimage-exiftool-perl macchanger magicrescue maskprocessor masscan minicom miredo mitmproxy  nasm nbtscan ncrack ncurses-hexedit netdiscover netmask netsed netsniff-ng nfs-common ngrep nikto nmap onesixtyone openvpn patator php php-mysql pixiewps plocate proxychains4 proxytunnel ptunnel python-is-python3 python3-impacket python3-pip python3-scapy python3-virtualenv radare2 rake reaver redsocks rfkill samba samdump2 sbd scalpel screen scrounge-ntfs sendemail sleuthkit smbmap snmp snmpd socat sqlmap ssldump sslh sslscan sslsplit statsprocessor stunnel4 swaks tcpick tcpreplay telnet testdisk tftp-hpa thc-ipv6  traceroute udptunnel unrar unar upx-ucl vboot-kernel-utils vboot-utils vim vlan vpnc wafw00f weevely wfuzz whatweb whois wifite xxd netcat tcpdump curl wget gobuster 
+
+With many more to come! The end goal will be to create a kali-like enviornemnt, such that users who are familiar with Kali will feel at home using this project.
+
+Our roadmap includes adding tools/libs like Metasploit, SecList, exploitdb(SearchSploit), and more!
 
 **Build and Run**
 ------------------
