@@ -1,0 +1,13 @@
+# This file insures that ubuntu packages get preference. 
+
+Package: *
+Pin: origin archive.ubuntu.com
+Pin-Priority: 990
+
+Package: *
+Pin: origin security.ubuntu.com
+Pin-Priority: 900
+
+Package: *
+Pin: origin http.kali.org
+Pin-Priority: 100
