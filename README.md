@@ -90,7 +90,7 @@ The following kernels are included in this container:
 * SQL
 * SQLlite
 
-Future Kenrel Goals:
+Future Kernel Goals:
 * Ruby
 * Docker
 * x64 Assembly
@@ -105,7 +105,7 @@ Additionally, the following dependencies and programs have been pre-installed:
 <details>
   <summary>Click to Expand List</summary>
 
-7zip aircrack-ng apache2 arp-scan arping atftpd axel bind9-dnsutils binwalk bluez bluez-hcidump bully cadaver cewl chntpw cifs-utils clang  creddump7 crunch  cryptsetup cryptsetup-initramfs cryptsetup-nuke-password default-mysql-server dirb dmitry dns2tcp dnsenum dnsrecon dos2unix ethtool exiv2 expect ffuf fierce fping gdisk git hashcat hashdeep hashid  hping3 hydra i2c-tools ifenslave ike-scan  inetsim iodine iw john libimage-exiftool-perl macchanger magicrescue maskprocessor masscan minicom miredo mitmproxy  nasm nbtscan ncrack ncurses-hexedit netdiscover netmask netsed netsniff-ng nfs-common ngrep nikto nmap onesixtyone openvpn patator php php-mysql pixiewps plocate proxychains4 proxytunnel ptunnel python-is-python3 python3-impacket python3-pip python3-scapy python3-virtualenv radare2 rake reaver redsocks rfkill samba samdump2 sbd scalpel screen scrounge-ntfs sendemail sleuthkit smbmap snmp snmpd socat sqlmap ssldump sslh sslscan sslsplit statsprocessor stunnel4 swaks tcpick tcpreplay telnet testdisk tftp-hpa thc-ipv6  traceroute udptunnel unrar unar upx-ucl vboot-kernel-utils vboot-utils vim vlan vpnc wafw00f weevely wfuzz whatweb whois wifite xxd netcat tcpdump curl wget gobuster 
+> 7zip aircrack-ng apache2 arp-scan arping atftpd axel bind9-dnsutils binwalk bluez bluez-hcidump bully cadaver cewl chntpw cifs-utils clang  creddump7 crunch  cryptsetup cryptsetup-initramfs cryptsetup-nuke-password default-mysql-server dirb dmitry dns2tcp dnsenum dnsrecon dos2unix ethtool exiv2 expect ffuf fierce fping gdisk git hashcat hashdeep hashid  hping3 hydra i2c-tools ifenslave ike-scan  inetsim iodine iw john libimage-exiftool-perl macchanger magicrescue maskprocessor masscan minicom miredo mitmproxy  nasm nbtscan ncrack ncurses-hexedit netdiscover netmask netsed netsniff-ng nfs-common ngrep nikto nmap onesixtyone openvpn patator php php-mysql pixiewps plocate proxychains4 proxytunnel ptunnel python-is-python3 python3-impacket python3-pip python3-scapy python3-virtualenv radare2 rake reaver redsocks rfkill samba samdump2 sbd scalpel screen scrounge-ntfs sendemail sleuthkit smbmap snmp snmpd socat sqlmap ssldump sslh sslscan sslsplit statsprocessor stunnel4 swaks tcpick tcpreplay telnet testdisk tftp-hpa thc-ipv6  traceroute udptunnel unrar unar upx-ucl vboot-kernel-utils vboot-utils vim vlan vpnc wafw00f weevely wfuzz whatweb whois wifite xxd netcat tcpdump curl wget gobuster
 
 </details>
 
