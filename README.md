@@ -36,13 +36,38 @@ This Docker container is designed to be a meta-project, combining the best of va
 **Installation**
 --------------
 
-@TODO - Fillout docker documentation
+@TODO - Fill out docker documentation
 
 `docker pull ghcr.io/hchasens/seclab:v0.0.2`
 
-Refer to JupyterLab Docker docs for more detail (untill this section in compleated). 
+An example `docker-compose.yaml` might look like the following: 
 
-Note: It might be benifical to leave several ports open to allow for a reverse shell.
+```yaml
+services:
+  SecLab:
+    image: ghcr.io/hchasens/seclab:v0.0.2
+    container_name: jupyter_lab
+    user: root
+    working_dir: "/home/hchasens"
+    ports:
+      - "8888:8888"
+    environment:
+      - NB_USER=hchasens
+      - CHOWN_HOME=yes
+      - CHOWN_EXTRA=/home/hchasens
+      - GEN_CERT=yes
+      - JUPYTER_ENABLE_LAB=yes
+      - RESTARTABLE=yes
+      - GRANT_SUDO=yes
+    volumes:
+      - /srv/jupyter:/home/hchasens/
+    restart: unless-stopped
+```
+
+
+Refer to JupyterLab Docker docs for more details (until this section is filled out). 
+
+Note: It might be beneficial to open several ports to allow for a reverse shell.
 
 @TODO - Add docker-compose.yaml file
 
@@ -84,7 +109,7 @@ Additionally, the following dependencies and programs have been pre-installed:
 
 </details>
 
-With many more to come! The end goal will be to create a kali-like enviornemnt, such that users who are familiar with Kali will feel at home using this project.
+With many more to come! The end goal will be to create a kali-like environment, such that users who are familiar with Kali will feel at home using this project.
 
 Our roadmap includes adding tools/libs like Metasploit, SecList, exploitdb(SearchSploit), and more!
 
@@ -106,17 +131,17 @@ To build and run this container, follow these steps:
 * Add a tools library
     + PEASS-ng (LinPEAS)
     + pentestmonkey/php-reverse-shell
-* Add quality of life extentions
+* Add quality-of-life extensions
     + Graphing Extention to Graph Notes
     + Extention to allow linking between notebooks
 * Add custom themes 
 * Add showcase notebook
-* Add deafult config
+* Add default config
 
 
 **License**
 ------------------
-Please note that if a directory within this container has another license file, the contents of that file supersede any licenses mentioned in the repository. As an example, /config/themes barrows it's license from the Jupyterlab Project.
+Please note that if a directory within this container has another license file, the contents of that file supersede any licenses mentioned in the repository. For example, /config/themes borrows its license from the Jupyterlab Project.
 
 Note: This README.md is subject to change as the project evolves. Please check the repository for the latest updates.
 
